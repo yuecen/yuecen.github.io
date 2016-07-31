@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="https://yuecen.net/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="https://yuecen.net/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://yuecen.net/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="yuecen">
+  <meta name="description" content="Posts and writings by yuecen">
+
+
+<meta name="keywords" content="angularjs, semantic-ui">
+<meta property="og:image" content="https://yuecen.net/images/yuecen_logo.jpg"/>
+
+  <title>
+    yuecen's blog
+&ndash; Dealing with memory leaks in directive when using visibility of Semantic UI  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="https://yuecen.net">
+        <img src="/images/yuecen_logo.jpg" alt="logo">
+      </a>
+      <h2><a href="https://yuecen.net">yuecen</a></h2>
+      <p></p>
+      <ul>
+        <li><a href="https://yuecen.net/pages/about.html">About</a></li>
+        <li><a href="https://github.com/yuecen" target="_blank">GitHub</a></li>
+        <li><a href="https://www.facebook.com/yuecen.yc" target="_blank">Facebook</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="https://yuecen.net">Index</a> &brvbar; <a href="https://yuecen.net/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="https://yuecen.net/dealing-with-memory-leaks-in-directive-when-using-visibility-of-semantic-ui.html">Dealing with memory leaks in directive when using visibility of Semantic UI</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I currently modified some code to enhance search experience at work for our site. Infinite scrolling can load more search results unknowingly during a search session, we adopted this way to get better search experience. However, unexpected memory leaks happened as developing.</p>
+<p>Our frontend is made by AngularJS and Semantic UI. Simply describe how I did to implement infinite scrolling, just call visibility behavior of Semantic UI. I was following the <a href="http://semantic-ui.com/behaviors/visibility.html#/examples">example</a> of visibility from official site, adding <code>onBottomVisible</code> callback into a Angular directive with restriction 'C' to trigger loading funtion for more search results. The code looks like this:</p>
+<div class="highlight"><pre><span></span><span class="nx">$element</span><span class="p">.</span><span class="nx">visibility</span><span class="p">({</span>
+    <span class="nx">once</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+    <span class="c1">// Update size when new content loads</span>
+    <span class="nx">observeChanges</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="c1">// Content on bottom edge visible</span>
+    <span class="nx">onBottomVisible</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// loads more search results</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>There are two Angular routes, main page and user page, both be able to call this directive by matching class name. Main page is to search and display results from the whole data of site, user page do the same things from a user's personal data. The memory leaks happen when a user switches one page to anthor one, cause search results will be loaded twice or more with previous page data. But why? How to fix it?</p>
+<p>Trying to figure out what happened there, I read the source code of the visibility from Semantic UI on GitHub. The version we were using is 2.1.8, I was trying to glimpse about <code>observeChanges</code> context in visibility source code. It seems that the <code>destroy</code> would not be called from it. Going forward to check the latest version 2.2.2. The function <code>destroy</code> could be run from <code>observeChanges</code> indirectly by event <code>contextChanged</code> when condition is satisfied. So I updated the package to 2.2.2, and then everything worked fine to me. The memory leaks were fixed.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sun 31 July 2016</p>
+    <p>Category: <a href="https://yuecen.net/category/programming.html">programming</a>
+ &ndash; Tags:
+      <a href="https://yuecen.net/tag/angularjs.html">angularjs</a>,      <a href="https://yuecen.net/tag/semantic-ui.html">semantic-ui</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; yuecen. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+    </div>
+  </main>
+</body>
+</html>
