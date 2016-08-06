@@ -69,7 +69,7 @@
 </pre></div>
 
 
-<p>There are two Angular routes, main page and user page, both be able to call this directive by matching class name. Main page is to search and display results from the whole data of site, user page do the same things from a user's personal data. The memory leaks happen when a user switches one page to anthor one, cause search results will be loaded twice or more with previous page data. But why? How to fix it?</p>
+<p>There are two Angular routes, main page and user page, both be able to call this directive by matching the class name. Main page is to search and display results from the whole data of site, user page do the same things from a user's personal data. The memory leaks happen when a user switches one page to anthor one, cause search results will be loaded twice or more with previous page data. But why? How to fix it?</p>
 <p>Trying to figure out what happened there, I read the source code of the visibility from Semantic UI on GitHub. The version we were using is 2.1.8, I was trying to glimpse about <code>observeChanges</code> context in visibility source code. It seems that the <code>destroy</code> would not be called from it. Going forward to check the latest version 2.2.2. The function <code>destroy</code> could be run from <code>observeChanges</code> indirectly by event <code>contextChanged</code> when condition is satisfied. So I updated the package to 2.2.2, and then everything worked fine to me. The memory leaks were fixed.</p>
   </div>
   <div class="article_meta">

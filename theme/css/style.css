@@ -38,14 +38,10 @@ aside div#user_meta ul {
 }
 aside div#user_meta ul li {
   display: inline;
-  line-height: 3em;
+  line-height: 2em;
 }
 aside div#user_meta ul li a {
-  padding: 5px 15px 5px 15px;
-  border: 3px solid #eeeeee;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
+  padding: 0 0 0 15px;
   color: #999999;
 }
 main header {
@@ -80,7 +76,7 @@ main article div.article_text pre {
   margin: 22px 2px 22px 2px;
   padding: 2px;
   color: #000000;
-  border-left: 3px solid #0e94ec;
+  border-left: 3px solid #dadada;
   font-size: 14px;
   font-family: 'PT Mono', monospace;
   background: #eeeeee;
@@ -130,7 +126,7 @@ main div#ending_message {
 }
 @media screen and (min-width: 1024px) {
   aside {
-    width: 25%;
+    width: 20%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -141,7 +137,7 @@ main div#ending_message {
     margin: 10px 0 0 0;
   }
   aside div#user_meta {
-    max-width: 192px;
+    /* max-width: 192px; */
     text-align: right;
   }
   aside div#user_meta ul li {
@@ -151,7 +147,7 @@ main div#ending_message {
     width: 75%;
     position: absolute;
     top: 0;
-    left: 25%;
+    left: 20%;
     overflow-x: hidden;
     overflow-y: hidden;
   }
