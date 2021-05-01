@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on yuecen&#39;s blog</title>
+    <link>http://yuecen.net/posts/</link>
+    <description>Recent content in Posts on yuecen&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Aug 2016 22:45:00 +0800</lastBuildDate><atom:link href="http://yuecen.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring potential users by an email marketing plan with GitHub</title>
+      <link>http://yuecen.net/posts/20160816/</link>
+      <pubDate>Tue, 16 Aug 2016 22:45:00 +0800</pubDate>
+      
+      <guid>http://yuecen.net/posts/20160816/</guid>
+      <description>I have been working for a startup company in a few months. Our product is a web site where people can write and read posts with their mind flow by a mindmap-like interface. The most of my job is to visualize log, helping ourselves to understand how users use our web site. Meanwhile, I also do some temporary tasks like adding a few seed data, or writing scripts for sending email to people in the early period.</description>
+    </item>
+    
+  </channel>
+</rss>
