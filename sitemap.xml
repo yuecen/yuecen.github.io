@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://yuecen.net/posts/20160816/</loc>
+    <loc>https://blog.yuecen.net/posts/20160816/</loc>
     <lastmod>2016-08-16T22:45:00+08:00</lastmod>
   </url><url>
-    <loc>http://yuecen.net/posts/</loc>
+    <loc>https://blog.yuecen.net/posts/</loc>
     <lastmod>2016-08-16T22:45:00+08:00</lastmod>
   </url><url>
-    <loc>http://yuecen.net/</loc>
+    <loc>https://blog.yuecen.net/</loc>
     <lastmod>2016-08-16T22:45:00+08:00</lastmod>
   </url><url>
-    <loc>http://yuecen.net/categories/</loc>
+    <loc>https://blog.yuecen.net/categories/</loc>
   </url><url>
-    <loc>http://yuecen.net/tags/</loc>
+    <loc>https://blog.yuecen.net/tags/</loc>
   </url>
 </urlset>
