@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>實現 B2B 食材電商價格隱蔽性與浮動機制 - 食秘為例</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<header>
+	<a href="https://blog.yuecen.net/">yuecen&#39;s blog</a>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>實現 B2B 食材電商價格隱蔽性與浮動機制 - 食秘為例</h1>
+			<time>01.02.2019 12:00</time>
+			<div>
+				<p>總結一下去年三月開始在加速器開發 B2B 食材電商網站<a href="https://www.foodroute66.com">食秘</a> (連結可能失效) 的一些心得。在 B2B 食材的世界中，價格扮演著關鍵的角色，而價格又更細分出兩個問題：第一，食材供應商對不同餐廳同一食材的定價是不一樣的。例如，因為某些餐廳距離較遠，採購量又不足，需要較多的成本，供應商自然給予該餐廳較高的價格。第二，某些食材價格會波動。例如，菜價經常受到天候影響價格，供應商需對旗下餐廳客戶修改報價。一般的 to C 的電商平台目前還沒有看到解決這兩個關鍵問題的做法，於是食秘團隊針對這兩點提出解決方案。</p>
+<h4 id="價格隱蔽性">價格隱蔽性</h4>
+<p>針對第一個問題，食秘設計出一個價格隱蔽性的做法。一開始我在電商網站上看不到商品（食材）價格，但要如何獲取價格呢？直接詢價！所以在食秘上設計了即時通訊的功能，讓餐廳看到上品後，直接在站上對該食材的供應商詢價，可以將所要的食材種類、量、單位、送貨時間、送貨地點等條件，在聊天功能內跟供應商互相確認，隨後供應商可以直接針對該餐廳設定這個商品的專屬價格，這個專屬價格有兩個組成：<code>底價</code>＋<code>各別定價</code>。</p>
+<p>同樣的，另外一家餐廳也來詢價後，供應商根據他的條件設定各別定價，於是得到了兩家餐廳對於同樣商品的價格是有差異化的，如下圖，底價 19 元的大白菜，在對兩家不同餐廳的定價會有差異，導致一家看到的大白菜是 25 元，另一家是 21 元。</p>
+<p><img src="/20190201/price_alert.png" alt=""></p>
+<h4 id="浮動價格機制">浮動價格機制</h4>
+<p>而第二個問題的解法，食秘設計一個動態調整菜價機制。供應商可以針對波動的食材，直接對底價進行修正，如此一來，不用個別通知那些底下的餐廳用戶，餐廳在網站上可以直接同步到最新的定價下單，如還是有疑慮在自行聯絡供應商即可，省去很多溝通成本。</p>
+<h4 id="使用技術棧">使用技術棧</h4>
+<p>團隊中我身為校長兼撞鐘，一人裝逼自幹，所以使用的技術是我自己最熟悉的語言。也特別感謝一位當時國三學生<a href="https://github.com/wilicw">庭瑋</a>在暑假的時候來團隊玩 Vue.js，也協助一些前端開發，分擔我的 loading。</p>
+<ul>
+<li>前端 Vue.js (包含 Vuex)</li>
+<li>後端 Python, Django REST Framework, ASGI (為了前端串 WebSocket 達到即時通訊)</li>
+<li>資料庫 PostgreSQL, Redis</li>
+<li>雲服務 AWS</li>
+<li>第三方 API 串接 LINE Login</li>
+</ul>
+<p>開發使用前後端分離的的架構，花比較多時間的除了前幾節提到的即時通訊、個別定價，食秘甚至已經做到了簡單的成本分析，不過我並沒有使用之前常用的 Elasticsearch aggregation，而是直接使用 Django 提供的 annotate 簡化架構。</p>
+<p><img src="/20190201/dashboard.jpeg" alt=""></p>
+<p>另外，系統內沒有金流串接，因為多數供應商還有店家的的付款習慣還是習慣現金或是月結，我們目前只負責資訊流單據的拋轉。</p>
+<h4 id="小結">小結</h4>
+<p>對於價格的隱蔽性與浮動機制，上述只是食秘提供的解法，不代表一定適用所有供應商的狀況。老實說，要做到整合眾多的供應商與餐廳這條路，比想像中還要艱辛，系統從無到有歷經八個月一人開發出上述的初版，但想到戰線要一直拉長到整合供應商後端，現在的人力與資源要做這個題目實在是非常吃力，以系統為發展的方向，勢必要補足團隊技術成員來分擔 loading，開發時程與生活經濟壓力同時下來，壓力非常大。</p>
+<p>能讓團隊成員做自己擅長的事，且有自己擅長的事可以做也很重要，有些堅持，也要與時俱進，保留彈性適時修正方向。我的意思是，例如團隊組成有一半的人是業務開發，沒道理硬要發展系統，應該是找到一個適合團隊方向的題目進行。</p>
+<p>離開加速器後，食秘進行了不少商業模式的討論與測試，最後，我們調整商業模式到一個能夠收到錢，又不至於一定要等所有功能都開發完成才能推廣的狀態，開啟了另一個題目<a href="https://food-map.io">食材找找</a> (連結可能失效)，這又是另外一個故事了。</p>
+			</div>
+			
+			
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/20190424/">工科系課堂分享</a></li>
+				
+				<li><a href="/posts/20190411/">對食材供應商逐步實現自動化轉單</a></li>
+				
+				<li><a href="/posts/20190201/">實現 B2B 食材電商價格隱蔽性與浮動機制 - 食秘為例</a></li>
+				
+				<li><a href="/posts/20170601/">Build a file conversion service by Django, Celery, and Docker</a></li>
+				
+				<li><a href="/posts/20170502/">Learning new programing languages with real problems</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2021 <a href="https://blog.yuecen.net/">yuecen&#39;s blog</a></p>
+</footer>
+
+</body>
+</html>

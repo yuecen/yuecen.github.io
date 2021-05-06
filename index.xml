@@ -6,7 +6,34 @@
     <description>Recent content on yuecen&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Jun 2017 12:00:00 +0800</lastBuildDate><atom:link href="https://blog.yuecen.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Apr 2019 12:00:00 +0800</lastBuildDate><atom:link href="https://blog.yuecen.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工科系課堂分享</title>
+      <link>https://blog.yuecen.net/posts/20190424/</link>
+      <pubDate>Wed, 24 Apr 2019 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.yuecen.net/posts/20190424/</guid>
+      <description>&lt;p&gt;分享食秘與食材找找創業經驗 [&lt;a href=&#34;https://blog.yuecen.net/talk/2019_%E6%88%90%E5%A4%A7%E5%B7%A5%E7%A7%91%E5%88%86%E4%BA%AB.pdf&#34;&gt;PDF&lt;/a&gt;]&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>對食材供應商逐步實現自動化轉單</title>
+      <link>https://blog.yuecen.net/posts/20190411/</link>
+      <pubDate>Thu, 11 Apr 2019 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.yuecen.net/posts/20190411/</guid>
+      <description>&lt;p&gt;食材找找上線三個多月了，很幸運的團隊找到一個小的施力點：&amp;ldquo;轉單&amp;rdquo;，讓我們能夠在食材供應鏈上提供價值給餐廳與供應商，重要的是，這個價值能夠被兩端的朋友肯定且願意付費。這篇是記錄一下食材找找怎麼處理轉單這件事，因為是個人部落格，會說明如何運用一些自動化的技術將大量的人工流程消除，使團隊成員有更多的時間去開發業務。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>實現 B2B 食材電商價格隱蔽性與浮動機制 - 食秘為例</title>
+      <link>https://blog.yuecen.net/posts/20190201/</link>
+      <pubDate>Fri, 01 Feb 2019 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.yuecen.net/posts/20190201/</guid>
+      <description>&lt;p&gt;總結一下去年三月開始在加速器開發 B2B 食材電商網站&lt;a href=&#34;https://www.foodroute66.com&#34;&gt;食秘&lt;/a&gt; (連結可能失效) 的一些心得。在 B2B 食材的世界中，價格扮演著關鍵的角色，而價格又更細分出兩個問題：第一，食材供應商對不同餐廳同一食材的定價是不一樣的。例如，因為某些餐廳距離較遠，採購量又不足，需要較多的成本，供應商自然給予該餐廳較高的價格。第二，某些食材價格會波動。例如，菜價經常受到天候影響價格，供應商需對旗下餐廳客戶修改報價。一般的 to C 的電商平台目前還沒有看到解決這兩個關鍵問題的做法，於是食秘團隊針對這兩點提出解決方案。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Build a file conversion service by Django, Celery, and Docker</title>
       <link>https://blog.yuecen.net/posts/20170601/</link>
