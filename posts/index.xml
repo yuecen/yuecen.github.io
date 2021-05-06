@@ -6,7 +6,43 @@
     <description>Recent content in Posts on yuecen&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Aug 2016 22:45:00 +0800</lastBuildDate><atom:link href="https://blog.yuecen.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jun 2017 12:00:00 +0800</lastBuildDate><atom:link href="https://blog.yuecen.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build a file conversion service by Django, Celery, and Docker</title>
+      <link>https://blog.yuecen.net/posts/20170601/</link>
+      <pubDate>Thu, 01 Jun 2017 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.yuecen.net/posts/20170601/</guid>
+      <description>I recently need to convert some files with pdf or pptx format into jpg format for our product. The concrete scenario is that when the service gets a file from a caller, the service is going to extract text information and convert files into images, then return them to the caller. Building this service have faced many problems, so I wanted to take some notes and explain clearly for it.</description>
+    </item>
+    
+    <item>
+      <title>Learning new programing languages with real problems</title>
+      <link>https://blog.yuecen.net/posts/20170502/</link>
+      <pubDate>Tue, 02 May 2017 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.yuecen.net/posts/20170502/</guid>
+      <description>I was learning Vue.js last weekend. The reason I learned is that I not only wanted to know a programming language but also wanted to solve my real problems from one of my friends. Some of my friends work at department stores, they&amp;rsquo;ve been facing the same problem of calculation. So I made a web page with an algorithm to fix this problem. They were so happy, their time can be saved by what I made.</description>
+    </item>
+    
+    <item>
+      <title>Cohort analysis</title>
+      <link>https://blog.yuecen.net/posts/20170409/</link>
+      <pubDate>Sun, 09 Apr 2017 12:00:00 +0800</pubDate>
+      
+      <guid>https://blog.yuecen.net/posts/20170409/</guid>
+      <description>When it comes to retention, cohort analysis is a common way to measure how users like your products. I helped our company to build it with our log system Elasticsearch. I decided using a faster way to build it, that means I might be abandoning some components. Cutting out the storage part is a sensible consideration. Just calculate retention rates, and show the results to my partners in a convenient way, sending the visualized data by Slack.</description>
+    </item>
+    
+    <item>
+      <title>A marketing efficiency comparison among social platforms, emails on GitHub and influencers</title>
+      <link>https://blog.yuecen.net/posts/20170403/</link>
+      <pubDate>Mon, 03 Apr 2017 22:45:00 +0800</pubDate>
+      
+      <guid>https://blog.yuecen.net/posts/20170403/</guid>
+      <description>My colleagues and I have made some marketing activities to promote our website. There were three main approaches we used. The first was to post a contrived content on social platforms such as Reddit, Twitter, attracting people click the links for leading to our website, the second was to send emails to people who starred a repository on GitHub, so they might like our website. Third, we reached a blogger (influencer) for a post.</description>
+    </item>
+    
     <item>
       <title>Exploring potential users by an email marketing plan with GitHub</title>
       <link>https://blog.yuecen.net/posts/20160816/</link>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cohort analysis</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<header>
+	<a href="https://blog.yuecen.net/">yuecen&#39;s blog</a>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>Cohort analysis</h1>
+			<time>09.04.2017 12:00</time>
+			<div>
+				<p>When it comes to retention, cohort analysis is a common way to measure how users like your products. I helped our company to build it with our log system Elasticsearch. I decided using a faster way to build it, that means I might be abandoning some components. Cutting out the storage part is a sensible consideration. Just calculate retention rates, and show the results to my partners in a convenient way, sending the visualized data by Slack.</p>
+<p>Before I started coding, I read many posts, trying to figure out how to build it. Some articles were too general to explain the whole process. Fortunately, there was a <a href="https://www.appboy.com/blog/calculate-retention-rate/">post</a> I can clearly understand what it wanted to tell us for cohort analysis. So I recommend you to read it if you wanted to build a cohort analysis from scratch. Here, I won&rsquo;t say too many details on calculation process, just talk about three components during implement.</p>
+<p><strong><em>An unified docker image</em></strong>. For all scripts of cohort analysis, I used an unified docker image to run them. It&rsquo;s really easy to manage and run the various scripts by a docker image with the same version of packages. I used Python virtualenv to build a virtual environment for developing the scripts, and then used the docker image to run the scripts in our production environment.</p>
+<p><strong><em>Cohort analysis</em></strong>. In the scripts, selecting time frame that make a little bit annoying for me. I have to be very careful to make sure each cohort within the correct time frame, avoiding the results that were affected by a leap year or an intercalary month.</p>
+<p><strong><em>Notification by Slack</em></strong>. After a result of cohort analysis is calculated by the scripts, the result will be converted into a visualized output, an ascii table, to send to the Slack channels. The output in the retention channel looks like:</p>
+<pre><code class="language-commandline" data-lang="commandline">weekly-reporter:
+
++---------------+-------+--------+-------+-------+-------+
+| Week          | Users | 1      | 2     | 3     | 4     |
++---------------+-------+--------+-------+-------+-------+
+| 03/26 - 04/01 | 556   | 100.00 |       |       |       |
+| 03/19 - 03/25 | 665   | 100.00 | 66.55 |       |       |
+| 03/12 - 03/18 | 287   | 100.00 | 44.66 | 32.73 |       |
+| 03/05 - 03/11 | 148   | 100.00 | 55.66 | 42.12 | 33.56 |
++---------------+-------+--------+-------+-------+-------+
+</code></pre><p>Using this simple way to receive your retention rate that have some advantages: First, your partners get latest information of retention immediately by Slack notification. Second, you can get another retention rate with other conditions by a search command on your log systems. For example, if I wanted to know how gender effect retention rate, I just add a search condition <code>gender:female</code> to our log system Elasticsearch. Third, your logs still are kept in your site.</p>
+
+			</div>
+			
+			
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/20170601/">Build a file conversion service by Django, Celery, and Docker</a></li>
+				
+				<li><a href="/posts/20170502/">Learning new programing languages with real problems</a></li>
+				
+				<li><a href="/posts/20170409/">Cohort analysis</a></li>
+				
+				<li><a href="/posts/20170403/">A marketing efficiency comparison among social platforms, emails on GitHub and influencers</a></li>
+				
+				<li><a href="/posts/20160816/">Exploring potential users by an email marketing plan with GitHub</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2021 <a href="https://blog.yuecen.net/">yuecen&#39;s blog</a></p>
+</footer>
+
+</body>
+</html>
